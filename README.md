@@ -1,3 +1,3 @@
 # Foosball-prosjekt
 
-# Dripping out a foosball table 
+# Prosjekt hvor vi lager oppgraderinger til foosball
