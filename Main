@@ -1,20 +1,34 @@
 # Hovedkode
 
 // these constants won't change:
-const int knockSensor = A0;  // the piezo is connected to analog pin 0
+const int knockSensor_1 = A0;  // the piezo is connected to analog pin 0
+const int knockSensor_2 = A1;  // the piezo is connected to analog pin 1
 const int threshold = 100;   // threshold value to decide when the detected sound is a knock or not
 
 // these variables will change:
-int sensorReading = 0;  // variable to store the value read from the sensor pin
+int sensorReading_1 = 0;  // variable to store the value read from the sensor pin
+int sensorReading_2 = 0;  // variable to store the value read from the sensor pin
 
 void loop() {
-  // read the sensor and store it in the variable sensorReading:
-  sensorReading = analogRead(knockSensor);
-
+  // read the sensor and store it in the variable sensorReading_1:
+    sensorReading_1 = analogRead(knockSensor_1);
+    
   // if the sensor reading is greater than the threshold:
-  if (sensorReading >= threshold) {
-    // send the string "Knock!" back to the computer, followed by newline
-    Serial.println("Knock_1");
-  }
+    if (sensorReading_1 >= threshold) {
+    // send the string "Mål_1" back to the computer, followed by newline
+    Serial.println("Mål_1");
+    }
   delay(100);  // delay to avoid overloading the serial port buffer
+}
+
+void loop() {
+  // read the sensor and store it in the variable sensorReading_2
+    sensorReading_2 = analogRead(knockSensor_2)
+
+  // if the sensor reading is greater that the threshold
+  if (sensorReading_2 >= threshold) {
+    // send the string "Mål_2" back to the computer; followed by newline
+    Serial.println("Mål_2")
+  }
+  delay(100);  // delay to avoid overloading the variable sensorReading_2
 }
