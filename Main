@@ -26,9 +26,9 @@ void loop() {
     sensorReading_2 = analogRead(knockSensor_2)
 
   // if the sensor reading is greater that the threshold
-  if (sensorReading_2 >= threshold) {
+    if (sensorReading_2 >= threshold) {
     // send the string "Mål_2" back to the computer; followed by newline
     Serial.println("Mål_2")
-  }
+    }
   delay(100);  // delay to avoid overloading the variable sensorReading_2
 }
