@@ -1,3 +1,5 @@
+#include <Adafruit_NeoPixel.h>
+
 // Bestemmer at Leser_For_Lag_1 skal være på pin 12
 #define Leser_For_Lag_1 12
 // Bestemmer at Leser_For_Lag_2 skal være på pin 14
