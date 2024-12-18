@@ -20,23 +20,6 @@ float move = 0.0; //  verdier for funksjon
 float animation = 0;
 float fadeAnimation = 0;
 
-// gjør dette en gang i begynnelsen av programmet
-void setup() {
-  // bestemmer hastigheten på signalet
-  Serial.begin (115200);
-  // bestemmer hvor ESP32 skal ta imot signal for begge lagene
-  pinMode(Leser_For_Lag_1, INPUT);
-  pinMode(Leser_For_Lag_2, INPUT);
-  
-  strip1.begin();          
-  strip1.show();            
-  strip1.setBrightness(BRIGHTNESS); 
-  strip2.begin();          
-  strip2.show();            
-  strip2.setBrightness(BRIGHTNESS);
-}
-
-
 
 // gjør dette foralltid
 void loop() {
