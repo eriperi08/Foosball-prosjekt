@@ -13,9 +13,6 @@ bool Fikk_Lag_2_Mål = false;
 #define LED_COUNT2  50
 #define BRIGHTNESS 255
 
-Adafruit_NeoPixel strip1(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip2(LED_COUNT2, LED_PIN2, NEO_GRB + NEO_KHZ800);
-
 float move = 0.0; //  verdier for funksjon
 float animation = 0;
 float fadeAnimation = 0;
