@@ -75,7 +75,7 @@ void loop() {
     strip2.show();
   }
   
-  if (Fikk_LAG_1_MÅL) {
+  if (Fikk_Lag_1_Mål) {
     colorWipe(strip1, strip1.Color(255, 0, 0), 25);
     colorWipe(strip1, strip1.Color(255, 128, 0), 25);
     colorWipe(strip1, strip1.Color(255, 255, 0), 25); 
@@ -87,7 +87,7 @@ void loop() {
     strip1.show();
   }
   
-  if (Fikk_LAG_2_MÅL) {
+  if (Fikk_Lag_2_Mål) {
     colorWipe(strip2, strip2.Color(0, 0, 255), 25);
     colorWipe(strip2, strip2.Color(0, 200, 255), 25);
     colorWipe(strip2, strip2.Color(0, 255, 255), 25);
