@@ -8,7 +8,7 @@
 bool Fikk_Lag_1_Mål = false;
 bool Fikk_Lag_2_Mål = false;
 #define LED_PIN 27 //ledpins og antall definisjon, kan endres
-#define LiED_PIN2 19
+#define LED_PIN2 19
 #define LED_COUNT  50
 #define LED_COUNT2  50
 #define BRIGHTNESS 255
