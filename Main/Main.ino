@@ -34,31 +34,33 @@ void loop() {
 
   visGoal_2(Goal_2);
   strip.show();
-   // leser verdien til Leser_For_Lag_1/2, samt lagrer de i variablene Lysnivå_Lag_1/2
-  int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
-  int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
 
-  // hvis lyset til Lysnivå_Lag_1 er under tusen er det mål
-  if (Lysnivå_Lag_1 < 1000){
-    Serial.print("Lag 1 fikk mål.");
-    Fikk_Lag_1_Mål = true;
-    delay(5000);
-    Fikk_Lag_1_Mål = false;
+// Marius sin del
+// leser verdien til Leser_For_Lag_1/2, samt lagrer de i variablene Lysnivå_Lag_1/2
+int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
+int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
+
+// hvis lyset til Lysnivå_Lag_1 er under tusen er det mål
+if (Lysnivå_Lag_1 < 1000){
+  Serial.print("Lag 1 fikk mål.");
+  Fikk_Lag_1_Mål = true;
+  delay(5000);
+  Fikk_Lag_1_Mål = false;
   }
-  // hvis lyset til Lysnivå_Lag_2 er under 300, er det mål
-  if (Lysnivå_Lag_2 < 300){
-    Serial.print("Lag 2 fikk mål");
-    Fikk_Lag_2_Mål = true;
-    delay(5000);
-    Fikk_Lag_2_Mål = false;
+// hvis lyset til Lysnivå_Lag_2 er under 300, er det mål
+if (Lysnivå_Lag_2 < 300){
+  Serial.print("Lag 2 fikk mål");
+  Fikk_Lag_2_Mål = true;
+  delay(5000);
+  Fikk_Lag_2_Mål = false;
   }
 
-  // printer verdien til Lysnivå_Lag_1/2 hver gang den looper
-  Serial.print("Lag_1 = "); 
-  Serial.println(Lysnivå_Lag_1);
-  Serial.print("Lag_2 = ");
-  Serial.println(Lysnivå_Lag_2);
-
+// printer verdien til Lysnivå_Lag_1/2 hver gang den looper
+Serial.print("Lag_1 = "); 
+Serial.println(Lysnivå_Lag_1);
+Serial.print("Lag_2 = ");
+Serial.println(Lysnivå_Lag_2);
+// Marius sin del slutt
 
 // Aktiveringskode for animasjoner
   bool Fikk_LAG_1_MÅL = true;  // to be removed once all code is put together
