@@ -5,7 +5,9 @@
 #define PIN 23
 int Goal_1 = 0;
 int Goal_2 = 0;
-bool KAMPSTART = false; 
+bool KAMPSTART = false;
+Fikk_Lag_1_Mål = false
+Fikk_Lag_2_Mål = false
 bool LAG_1_VANT = false;
 bool LAG_2_VANT = false;
 
@@ -66,8 +68,6 @@ void loop() {
     Goal_1 +=1;
     visGoal_1(Goal_1);
     Fikk_Lag_1_Mål = true;
-    delay(5000);
-    Fikk_Lag_1_Mål = false;
   }
   // hvis lyset til Lysnivå_Lag_2 er under 300, er det mål
   if (Lysnivå_Lag_2 < 800){
@@ -75,8 +75,6 @@ void loop() {
     Goal_2 +=1;
     visGoal_2(Goal_2);
     Fikk_Lag_2_Mål = true;
-    delay(5000);
-    Fikk_Lag_2_Mål = false;
   }
 
   // printer verdien til Lysnivå_Lag_1/2 hver gang den looper
@@ -99,6 +97,7 @@ void loop() {
     strip1.show();
     strip2.clear();
     strip2.show();
+    bool KAMPSTART = false
   }
   
   if (Fikk_Lag_1_Mål) {
@@ -111,6 +110,7 @@ void loop() {
     }
     strip1.clear();
     strip1.show();
+    Fikk_Lag_1_Mål = false
   }
   
   if (Fikk_Lag_2_Mål) {
@@ -123,6 +123,7 @@ void loop() {
     }
     strip2.clear();
     strip2.show();
+    Fikk_Lag_2_Mål = false
   }
   
   
@@ -142,6 +143,7 @@ void loop() {
       strip1.show();
       strip2.show();
       delay(500); 
+      bool LAG_1_VANT = false
     }
   }
   
@@ -160,7 +162,8 @@ void loop() {
       } 
       strip1.show();
       strip2.show();
-      delay(500); 
+      delay(500);
+      bool LAG_2_VANT = false
     }
   }
   // venter i et tiendels sekund, for å ikke overbelaste ESP32
