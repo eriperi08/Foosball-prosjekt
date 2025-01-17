@@ -3,7 +3,7 @@
 // Definer antall LED-piksler
 #define Rod_Lys_Lag_1 26
 #define Rod_Lys_Lag_2 27
-#define Leser_For_Lag_1 12
+#define Leser_For_Lag_1 25
 #define Leser_For_Lag_2 14
 bool Fikk_Lag_1_Mål = false;
 bool Fikk_Lag_2_Mål = false;
