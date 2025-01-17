@@ -13,7 +13,7 @@ bool Fikk_Lag_2_Mål = false;
 #define LED_COUNT2  50
 #define BRIGHTNESS 255
 #define NUMPIXELS 14
-#define PIN 23
+#define PIN 2
 
 float move = 0.0; //  verdier for funksjon
 float animation = 0;
