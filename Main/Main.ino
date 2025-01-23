@@ -7,6 +7,8 @@
 #define Leser_For_Lag_2 14
 bool Fikk_Lag_1_Mål = false;
 bool Fikk_Lag_2_Mål = false;
+int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
+int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
  
 void setup() {
   Serial.begin (115200);
@@ -19,8 +21,6 @@ void setup() {
   }
  
 void loop() {
-  int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
-  int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
   if (Lysnivå_Lag_1 < 800){
     Serial.print("Lag 1 fikk mål.");
     Fikk_Lag_1_Mål = true;
