@@ -41,11 +41,6 @@ void loop() {
     delay(1000);
     }
   }
-  Serial.print("Lag_1 = ");
-  Serial.println(Lysnivå_Lag_1);
-  Serial.print("Lag_2 = ");
-  Serial.println(Lysnivå_Lag_2);
-}
 
 ///////////////////////////////////////////////////////////////////////////
 ////////////////////             animasjoner           ////////////////////
