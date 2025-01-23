@@ -21,7 +21,7 @@ void setup() {
   }
  
 void loop() {
-  if (Lysnivå_Lag_1 < 800){
+  if (Lysnivå_Lag_1 < 1000){
     Serial.print("Lag 1 fikk mål.");
     Fikk_Lag_1_Mål = true;
     for (int i = 0; i <= 5; i++){
@@ -31,7 +31,7 @@ void loop() {
     delay(1000);
     }
   }
-  if (Lysnivå_Lag_2 < 800){
+  if (Lysnivå_Lag_2 < 1000){
     Serial.print("Lag 2 fikk mål");
     Fikk_Lag_2_Mål = true;
     for (int i = 0; i <= 5; i++){
