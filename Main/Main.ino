@@ -25,7 +25,7 @@ void loop() {
     Serial.print("Lag 1 fikk mål.");
     Fikk_Lag_1_Mål = true;
     for (int i = 0; i <= 5; i++){
-      digitalWrite(Rod_Lys_Lag_1, LOW);
+    digitalWrite(Rod_Lys_Lag_1, LOW);
     delay(1000);
     digitalWrite(Rod_Lys_Lag_1, HIGH);
     delay(1000);
