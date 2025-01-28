@@ -1,5 +1,3 @@
-@@ -1,167 +1,193 @@
-@ -1,4 +1,9 @@
 #include <Adafruit_NeoPixel.h>
 #include <MFRC522.h>  // Library responsible for communicating with the module RFID-RC522
 #include <SPI.h>      // Library responsible for communicating with SPI bus
@@ -14,6 +12,8 @@
 // Disse boolene sier at Lag 1/2 ikke har fått mål enda
 bool Fikk_Lag_1_Mål = false;
 bool Fikk_Lag_2_Mål = false;
+int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
+int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
 #define LED_PIN 27 //ledpins og antall definisjon, kan endres
 #define LED_PIN2 19
 #define LED_COUNT  50
@@ -27,6 +27,26 @@ float animation = 0;
 float fadeAnimation = 0;
 
 Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+//Definerer oeiner til rfide, kanper og kjerm
+#define I2C_SDA 4 
+#define I2C_SCL 5
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+
+#define blueButtonPin 13
+#define redButtonPin 12
+int blueButtonState;
+int redButtonState;
+
+#define SS_PIN 21
+#define RST_PIN 22
+#define SIZE_BUFFER 18
+#define MAX_SIZE_BLOCK 16
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //Scoreboard
 
@@ -43,9 +63,7 @@ const bool digitSegments[10][7] = {
   {1, 1, 0, 0, 0, 0, 1}, // 7
   {1, 1, 1, 1, 1, 1, 1}, // 8
   {1, 1, 1, 1, 0, 1, 1}  // 9
-@ -39,6 +44,28 @@ const bool digitSegments[10][7] = {
 };
-
 
 // Structure to hold UID, name, and poengsum
 struct Person {
@@ -72,18 +90,17 @@ Person registeredPersons[] = {
 // Funksjon for å sette opp lysdiodene for et tall
 void visGoal_1(int Goal_1) {
 if (Goal_1 < 0 || Goal_1 > 9) return; // Valider at tallet er mellom 0 og 9
-@ -165,3 +192,153 @@ void bouncewave(Adafruit_NeoPixel& strip, uint32_t color, int wait){
-  move += 0.08; 
-  delay(40); 
-}
-
   for (int i = 0; i < 7; i++) {
     if (digitSegments[Goal_1][i]) {
       strip.setPixelColor(i, strip.Color(255, 0, 0)); // Rødt lys for segmentene som skal være på
-    } else {
+    } 
+    else {
       strip.setPixelColor(i, strip.Color(0, 0, 0));   // Slå av segmentene som ikke er i bruk
+    }
+  }
+}
 ///////////////////////////////////////////////////////////////////////////
-////////////////////  Funksjoener for rfid skaner  ////////////////////
+////////////////////  Funksjoner for rfid skaner  ////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
 void printToDisplay(String text){
@@ -98,26 +115,31 @@ bool compareUID(byte* uid1, byte* uid2) {
         if (uid1[i] != uid2[i]) {
             return false;
         }
-}
+        else {
+            return true;
+      }
+    }
   }
-    return true;
-}
+
 void visGoal_2(int Goal_2) {
   if (Goal_2 < 0 || Goal_2 > 9) return; // Valider at tallet er mellom 0 og 9
 
   for (int i = 7; i < 14; i++) {
     if (digitSegments[Goal_2][i-7]) {
       strip.setPixelColor(i, strip.Color(0, 0, 255)); // Rødt lys for segmentene som skal være på
-    } else {
+    } 
+    else {
       strip.setPixelColor(i, strip.Color(0, 0, 0));   // Slå av segmentene som ikke er i bruk
+    }
+  }
+}
+
 void printUID(byte* uid) {
     for (byte i = 0; i < 4; i++) {
         Serial.print(uid[i] < 0x10 ? " 0" : " ");
         Serial.print(uid[i], HEX);
-}
+    }
   }
-    Serial.println();
-}
 
 ///////////////////////////////////////////////////////////////////////////
 ////////////////////   Forskjellige animasjoner/deler  ////////////////////
@@ -131,13 +153,15 @@ void colorWipe(Adafruit_NeoPixel& strip, uint32_t color, int wait) {
     strip.show();                    
     delay(30);                     
   }
+}
+
 Person* scanCard() {
     // Vent på at et kort skal nærme seg
-    while (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
+    while (!MFRC522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
         delay(100);
     }
 
-    byte* scannedUID = mfrc522.uid.uidByte;
+    byte* scannedUID = MFRC522.uid.uidByte;
 
     // Sjekk om skannet UID er registrert
     for (Person& person : registeredPersons) {

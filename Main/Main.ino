@@ -1,34 +1,4 @@
-#include <Funksjoner.h>
-
-
-//Definerer oeiner til rfide, kanper og kjerm
-#define I2C_SDA 4 
-#define I2C_SCL 5
-
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define OLED_RESET -1
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-#define blueButtonPin 13
-#define redButtonPin 12
-int blueButtonState;
-int redButtonState;
-
-#define SS_PIN 21
-#define RST_PIN 22
-#define SIZE_BUFFER 18
-#define MAX_SIZE_BLOCK 16
-
-// Definer antall LED-piksler
-#define Rod_Lys_Lag_1 26
-#define Rod_Lys_Lag_2 27
-#define Leser_For_Lag_1 25
-#define Leser_For_Lag_2 14
-bool Fikk_Lag_1_Mål = false;
-bool Fikk_Lag_2_Mål = false;
-int Lysnivå_Lag_1 = analogRead(Leser_For_Lag_1);
-int Lysnivå_Lag_2 = analogRead(Leser_For_Lag_2);
+#include <funksjoner.h>
  
 void setup() {
   Serial.begin (115200);
