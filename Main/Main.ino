@@ -2,6 +2,9 @@
 #include <funksjoner.h>
 
 void setup() {
+  strip0.setBrightness(25);
+  strip1.setBrightness(25);
+  strip2.setBrightness(25);
   strip0.begin(); // Gjør alle stripene klare
   strip0.show();
   strip1.begin();
